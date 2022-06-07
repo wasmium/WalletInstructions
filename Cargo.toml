@@ -1,0 +1,20 @@
+[package]
+name = "wallet-instructions"
+version = "1.0.0"
+authors = ["Wasmium Network Developers <hq@wasmium.network>"]
+edition = "2021"
+license = "MPL-2.0"
+description = "A multi-sig Solana wallet that lives onchain"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+borsh = "0.9.3"
+bs58 = "0.4.0"
+hex = "0.4.3"
+humantime = "2.1.0"
+tai64 = "4.0.0"
+zeroed-store = { git = "https://github.com/wasmium/ZeroedStore.git" }
+
+[features]
