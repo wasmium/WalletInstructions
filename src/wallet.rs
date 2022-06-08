@@ -163,6 +163,7 @@ impl Default for OnChainWallet {
 )]
 
 pub struct TransferRequest {
+    credit_to: [u8; 32],
     amount: u64,
     approved_by: [[u8; 32]; 3],
 }
