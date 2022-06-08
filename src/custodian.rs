@@ -38,7 +38,7 @@ impl Custodian {
         self
     }
 
-    pub fn build(&mut self) -> &mut Self {
+    pub fn build(mut self) -> Self {
         self.timestamp = Tai64N::now().to_bytes();
 
         self
