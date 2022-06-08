@@ -14,7 +14,7 @@ pub enum WalletInstruction {
     DecreaseCustodianLimit(u8),
     IncreaseArbitratorLimit(u8),
     DecreaseArbitratorLimit(u8),
-    AddCustodian([u8; 32]),
+    AddCustodian(crate::Custodian),
     RemoveCustodian([u8; 32]),
     RequestTransfer { public_key: PublicKey, token: u64 },
     Transfer { public_key: PublicKey, token: u64 },
