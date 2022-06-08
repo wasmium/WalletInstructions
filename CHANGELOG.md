@@ -1,4 +1,16 @@
-## [1.0.0] - 2022-07-04
+## [1.0.1] - 2022-06-08
+
+#### **Added**
+
+- Add account public key to credit in the `TransferRequest` 
+- Instruction to add custodian should take `Custodian` as arguments 
+
+#### **Fixed**
+
+- Make build method consume self
+
+## [1.0.0] - 2022-06-04
+
 ### Added
 - Initial release
 - Limit licenses acceptable for the project using `deny.toml` file
