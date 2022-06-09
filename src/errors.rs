@@ -20,6 +20,8 @@ pub enum WalletError {
     /// No more `Custodian`s can be added to the storage,
     /// remove an existing `Custodian` first
     CustodianStoreFull,
+    /// The custodian to be added already exists
+    CustodianAlreadyExists,
     /// The amount requested by the owner of the wallet does not
     /// match the amount approved by the `Custodian`
     RequestedAmountMismatch,

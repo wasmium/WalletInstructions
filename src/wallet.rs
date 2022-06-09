@@ -27,18 +27,31 @@ impl OnChainWallet {
         }
     }
 
-    pub fn add_custodian(&mut self, custodian: Custodian) -> WalletResult<&mut Self> {
-        if let Some((index, _)) = self
-            .custodians
-            .iter()
-            .enumerate()
-            .find(|(_, custodian)| custodian.public_key() == [0u8; 32])
-        {
-            self.custodians[index] = custodian;
+    pub fn add_custodian(&mut self, new_custodian: Custodian) -> WalletResult<&mut Self> {
+        enum StoreStatus {
+            Full,
+            Vacant(usize),
+        }
 
-            Ok(self)
-        } else {
-            Err(WalletError::CustodianStoreFull)
+        let mut store_status = StoreStatus::Full;
+
+        for (index, custodian) in self.custodians.iter().enumerate() {
+            if custodian.public_key() == new_custodian.public_key() {
+                return Err(WalletError::CustodianAlreadyExists);
+            }
+
+            if custodian.public_key() == [0u8; 32] {
+                store_status = StoreStatus::Vacant(index)
+            }
+        }
+
+        match store_status {
+            StoreStatus::Full => Err(WalletError::CustodianStoreFull),
+            StoreStatus::Vacant(index) => {
+                self.custodians[index] = new_custodian;
+
+                Ok(self)
+            }
         }
     }
 
